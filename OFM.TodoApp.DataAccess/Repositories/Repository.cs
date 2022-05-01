@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OFM.TodoApp.DataAccess.Context;
 using OFM.TodoApp.DataAccess.Interfaces;
+using OFM.TodoApp.Entities.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OFM.TodoApp.DataAccess.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class, new()
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly TodoContext _context;
 
@@ -29,7 +30,7 @@ namespace OFM.TodoApp.DataAccess.Repositories
             return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> GetByFilte(Expression<Func<T, bool>> filter, bool asNoTracking = false)
+        public async Task<T> GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false)
         {
             return asNoTracking ? await _context.Set<T>().SingleOrDefaultAsync(filter) : await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
         }
@@ -44,14 +45,18 @@ namespace OFM.TodoApp.DataAccess.Repositories
             return _context.Set<T>().AsQueryable();
         }
 
-        public void Remove(T entity)
+        public void Remove(object id)
         {
-            _context.Set<T>().Remove(entity);
+            var deletedEntity = _context.Set<T>().Find(id);
+            _context.Set<T>().Remove(deletedEntity);
+            //_context.Set<T>().Remove(entity);
         }
 
         public void Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+            var updatedEntity = _context.Set<T>().Find(entity.Id);
+            _context.Entry(updatedEntity).CurrentValues.SetValues(entity);
+            //_context.Set<T>().Update(entity);
         }
     }
 }

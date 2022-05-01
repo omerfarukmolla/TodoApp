@@ -1,15 +1,16 @@
 ﻿using OFM.TodoApp.Dtos.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OFM.TodoApp.Dtos.WorkDtos
 {
-    public class WorkListDto : IDto
+    public class WorkCreateDto : IDto
     {
-        public int Id { get; set; }
+        [Required(ErrorMessage = "Defination is required.")]
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
     }

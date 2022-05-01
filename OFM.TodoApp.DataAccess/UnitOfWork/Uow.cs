@@ -1,6 +1,7 @@
 ﻿using OFM.TodoApp.DataAccess.Context;
 using OFM.TodoApp.DataAccess.Interfaces;
 using OFM.TodoApp.DataAccess.Repositories;
+using OFM.TodoApp.Entities.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace OFM.TodoApp.DataAccess.UnitOfWork
             _context = context;
         }
 
-        public IRepository<T> GetRepository<T>() where T : class, new()
+        public IRepository<T> GetRepository<T>() where T : BaseEntity
         {
             return new Repository<T>(_context);
         }

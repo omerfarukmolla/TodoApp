@@ -1,5 +1,7 @@
-﻿using OFM.TodoApp.Business.Interfaces;
+﻿using AutoMapper;
+using OFM.TodoApp.Business.Interfaces;
 using OFM.TodoApp.DataAccess.UnitOfWork;
+using OFM.TodoApp.Dtos.Interfaces;
 using OFM.TodoApp.Dtos.WorkDtos;
 using OFM.TodoApp.Entities.Domains;
 using System;
@@ -13,31 +15,43 @@ namespace OFM.TodoApp.Business.Services
     public class WorkService : IWorkService
     {
         private readonly IUow _uow;
-
-        public WorkService(IUow uow)
+        private readonly IMapper _mapper;
+        public WorkService(IUow uow, IMapper mapper)
         {
             _uow = uow;
+            _mapper = mapper;
+        }
+
+        public async Task Create(WorkCreateDto dto)
+        {
+            await _uow.GetRepository<Work>().Create(_mapper.Map<Work>(dto)); ;
+
+            await _uow.SaveChange();
         }
 
         public async Task<List<WorkListDto>> GetAll()
         {
-            var list = await _uow.GetRepository<Work>().GetAll();
+            return _mapper.Map<List<WorkListDto>>(await _uow.GetRepository<Work>().GetAll());
+        }
 
-            var workList = new List<WorkListDto>();
+        public async Task<IDto> GetById<IDto>(int id)
+        {
+            return _mapper.Map<IDto>(await _uow.GetRepository<Work>().GetByFilter(x => x.Id == id));
+        }
 
-            if (list != null && list.Count() > 0)
-            {
-                foreach (var work in list)
-                {
-                    workList.Add(new() 
-                    {
-                        Definition = work.Definition,
-                        IsCompleted = work.IsCompleted,
-                        Id=work.Id,
-                    });
-                }
-            }
-            return workList;
+        public async Task Remove(int id)
+        {
+
+            _uow.GetRepository<Work>().Remove(id);
+            await _uow.SaveChange();
+
+        }
+
+        public async Task Update(WorkUpdateDto dto)
+        {
+            _uow.GetRepository<Work>().Update(_mapper.Map<Work>(dto));
+
+            await _uow.SaveChange();
         }
     }
 }
