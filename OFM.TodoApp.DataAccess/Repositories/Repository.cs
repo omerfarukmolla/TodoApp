@@ -22,7 +22,7 @@ namespace OFM.TodoApp.DataAccess.Repositories
 
         public async Task Create(T entity)
         {
-           await _context.Set<T>().AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity);
         }
 
         public async Task<List<T>> GetAll()
@@ -35,7 +35,7 @@ namespace OFM.TodoApp.DataAccess.Repositories
             return asNoTracking ? await _context.Set<T>().SingleOrDefaultAsync(filter) : await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
         }
 
-        public async Task<T> GetById(object Id)
+        public async Task<T> Find(object Id)
         {
             return await _context.Set<T>().FindAsync(Id);
         }
@@ -45,18 +45,14 @@ namespace OFM.TodoApp.DataAccess.Repositories
             return _context.Set<T>().AsQueryable();
         }
 
-        public void Remove(object id)
+        public void Remove(T entity)
         {
-            var deletedEntity = _context.Set<T>().Find(id);
-            _context.Set<T>().Remove(deletedEntity);
-            //_context.Set<T>().Remove(entity);
+            _context.Set<T>().Remove(entity);
         }
 
-        public void Update(T entity)
+        public void Update(T entity,T unchanged)
         {
-            var updatedEntity = _context.Set<T>().Find(entity.Id);
-            _context.Entry(updatedEntity).CurrentValues.SetValues(entity);
-            //_context.Set<T>().Update(entity);
+            _context.Entry(unchanged).CurrentValues.SetValues(entity);
         }
     }
 }

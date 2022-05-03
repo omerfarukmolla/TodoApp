@@ -6,9 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OFM.TodoApp.Common\OFM.TodoApp.Common.csproj" />
     <ProjectReference Include="..\OFM.TodoApp.DataAccess\OFM.TodoApp.DataAccess.csproj" />
     <ProjectReference Include="..\OFM.TodoApp.Dtos\OFM.TodoApp.Dtos.csproj" />
   </ItemGroup>

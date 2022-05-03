@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.DataAccess", "OFM.TodoApp.DataAccess\OFM.TodoApp.DataAccess.csproj", "{6B7867C6-EFA7-4BF5-A95A-A060B61C88F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OFM.TodoApp.DataAccess", "OFM.TodoApp.DataAccess\OFM.TodoApp.DataAccess.csproj", "{6B7867C6-EFA7-4BF5-A95A-A060B61C88F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.Business", "OFM.TodoApp.Business\OFM.TodoApp.Business.csproj", "{B0C59F49-1896-4D19-ABAD-15C43A2B243A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OFM.TodoApp.Business", "OFM.TodoApp.Business\OFM.TodoApp.Business.csproj", "{B0C59F49-1896-4D19-ABAD-15C43A2B243A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.Entities", "OFM.TodoApp.Entities\OFM.TodoApp.Entities.csproj", "{959AC3C2-D1E7-4953-8C2A-5F5613E8D324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OFM.TodoApp.Entities", "OFM.TodoApp.Entities\OFM.TodoApp.Entities.csproj", "{959AC3C2-D1E7-4953-8C2A-5F5613E8D324}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.Dtos", "OFM.TodoApp.Dtos\OFM.TodoApp.Dtos.csproj", "{D987E232-6A75-40B8-ADF8-F3AFBF979131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OFM.TodoApp.Dtos", "OFM.TodoApp.Dtos\OFM.TodoApp.Dtos.csproj", "{D987E232-6A75-40B8-ADF8-F3AFBF979131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.UI", "OFM.TodoApp.UI\OFM.TodoApp.UI.csproj", "{1F86D0D1-D6F0-421F-A525-90A2ED8B101D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OFM.TodoApp.UI", "OFM.TodoApp.UI\OFM.TodoApp.UI.csproj", "{1F86D0D1-D6F0-421F-A525-90A2ED8B101D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OFM.TodoApp.Common", "OFM.TodoApp.Common\OFM.TodoApp.Common.csproj", "{B373C70E-5A66-4652-A6B6-A1FA98216C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1F86D0D1-D6F0-421F-A525-90A2ED8B101D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F86D0D1-D6F0-421F-A525-90A2ED8B101D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F86D0D1-D6F0-421F-A525-90A2ED8B101D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B373C70E-5A66-4652-A6B6-A1FA98216C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B373C70E-5A66-4652-A6B6-A1FA98216C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B373C70E-5A66-4652-A6B6-A1FA98216C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B373C70E-5A66-4652-A6B6-A1FA98216C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

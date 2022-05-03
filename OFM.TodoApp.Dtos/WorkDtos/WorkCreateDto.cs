@@ -10,7 +10,7 @@ namespace OFM.TodoApp.Dtos.WorkDtos
 {
     public class WorkCreateDto : IDto
     {
-        [Required(ErrorMessage = "Defination is required.")]
+        //[Required(ErrorMessage = "Defination is required.")]
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
     }

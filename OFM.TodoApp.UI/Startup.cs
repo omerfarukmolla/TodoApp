@@ -31,6 +31,7 @@ namespace OFM.TodoApp.UI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Home/NotFound", "?code={0}");
             
             app.UseStaticFiles(new StaticFileOptions() 
             {

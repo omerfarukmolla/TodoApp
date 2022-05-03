@@ -1,4 +1,5 @@
-﻿using OFM.TodoApp.Dtos.Interfaces;
+﻿using OFM.TodoApp.Common.ResponseObjects;
+using OFM.TodoApp.Dtos.Interfaces;
 using OFM.TodoApp.Dtos.WorkDtos;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,10 @@ namespace OFM.TodoApp.Business.Interfaces
 {
     public interface IWorkService
     {
-        Task<List<WorkListDto>> GetAll();
-        Task Create(WorkCreateDto dto);
-        Task<IDto> GetById<IDto>(int id);
-        Task Remove(int id);
-        Task Update (WorkUpdateDto dto);
-
-
+        Task<IResponse<List<WorkListDto>>> GetAll();
+        Task<IResponse<WorkCreateDto>> Create(WorkCreateDto dto);
+        Task<IResponse<IDto>> GetById<IDto>(int id);
+        Task<IResponse> Remove(int id);
+        Task<IResponse<WorkUpdateDto>> Update (WorkUpdateDto dto);
     }
 }

@@ -10,11 +10,11 @@ namespace OFM.TodoApp.DataAccess.Interfaces
     public interface IRepository<T> where T : BaseEntity
     {
         Task<List<T>> GetAll();
-        Task<T> GetById(object Id);
+        Task<T> Find(object Id);
         Task<T> GetByFilter(Expression<Func<T,bool>> filter, bool asNoTracking = false);
         Task Create(T entity);
-        void Update(T entity);
-        void Remove(object id);
+        void Update(T entity,T unchanged);
+        void Remove(T entity);
         IQueryable<T> GetQuery();
     }
 }

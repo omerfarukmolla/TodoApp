@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OFM.TodoApp.Business.Interfaces;
 using OFM.TodoApp.Business.Mapping.AuotMapperWork;
 using OFM.TodoApp.Business.Services;
+using OFM.TodoApp.Business.ValidationRules;
 using OFM.TodoApp.DataAccess.Context;
 using OFM.TodoApp.DataAccess.UnitOfWork;
+using OFM.TodoApp.Dtos.WorkDtos;
 
 namespace OFM.TodoApp.Business.DependencyResolvers.Microsoft
 {
@@ -27,8 +30,10 @@ namespace OFM.TodoApp.Business.DependencyResolvers.Microsoft
 
             services.AddSingleton(mapper);
             services.AddScoped<IUow, Uow>();
-
             services.AddScoped<IWorkService, WorkService>();
+
+            services.AddTransient<IValidator<WorkCreateDto>, WorkCreateDtoValidator>();
+            services.AddTransient<IValidator<WorkUpdateDto>, WorkUpdateDtoValidator>();
         }
     }
 }
